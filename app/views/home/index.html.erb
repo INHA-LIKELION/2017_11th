@@ -1,0 +1,44 @@
+<style>
+  td{
+    border:1px solid #999999;
+  }
+
+</style>
+<div class = 'container'>
+  <h1>메일을 보내봅시다</h1>
+  <form method = 'get' action = '/home/sendMail'>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" name = 'email' class="form-control" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name = 'title' class="form-control" id="title" placeholder="title">
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea name = 'content' class = 'form-control' id = 'content' rows = '5'></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+<div class = 'container'>
+  <h1>크롤링한 결과</h1>
+  <button onclick = 'location.href = "/home/crawler"'>크롤링하기</button>
+  <table>
+    <thead>
+    <tr>
+      <td width = "40%">제목</td>
+      <td width = "60%">내용</td>
+    </tr>
+    </thead>
+    <tbody>
+    <%@res.each do |p|%>
+        <tr>
+          <td><%= p.title %></td>
+          <td><%=p.content%></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+</div>
